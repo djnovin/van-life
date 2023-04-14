@@ -15,3 +15,12 @@ model Subscriber {
   email     String   @unique
   createdAt DateTime @default(now())
 }
+
+model Van {
+  id          Int    @id @default(autoincrement())
+  name        String
+  price       Int
+  description String
+  imageUrl    String
+  type        String
+}

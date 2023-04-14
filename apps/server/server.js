@@ -32,7 +32,7 @@ static routes - routes that are not dynamic
 dynamic routes - routes that are dynamic
 */
 
-// get individual van
+/*
 app.get("/api/vans/:id", (req, res) => {
   // get id from url
   const id = req.params.id;
@@ -98,8 +98,9 @@ app.get("/api/vans/:id", (req, res) => {
   // send van as response
   res.json(van);
 });
+*/
 
-// get all vans
+/*
 app.get("/api/vans", (req, res) => {
   const data = [
     {
@@ -160,6 +161,25 @@ app.get("/api/vans", (req, res) => {
   res.send(data);
   });
 
+*/
+
+app.get("/api/vans", async(req, res) => {
+  const data = await prisma.van.findMany();
+  console.log(data);
+  res.send(data);
+});
+
+app.get("/api/vans/:id", async(req, res) => {
+  const { id } = req.params;
+  const data = await prisma.van.findUnique({
+    where: {
+      id: parseInt(id),
+    },
+  });
+  console.log(data);
+  res.send(data);
+});
+
 app.post("/api/newsletter", (req, res) => {
 // save email to database with prisma
 const { email } = req.body
@@ -176,6 +196,17 @@ prisma.newsletter
   .catch((err) => {
     console.log(err);
   });
+});
+
+app.get("/api/newsletter", (req, res) => {
+  prisma.newsletter
+    .findMany()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.get("/", (req, res) => {

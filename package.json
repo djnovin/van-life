@@ -6,7 +6,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"pnpm run server:dev\" \"pnpm run client:dev\"",
     "server:dev": "pnpm --filter server run dev",
-    "client:dev": "pnpm --filter client run dev"
+    "client:dev": "pnpm --filter client run dev",
+    "seed": "pnpm --filter server run seed",
+    "studio": "pnpm --filter server run prisma:studio",
+    "migrate": "pnpm --filter server run prisma:migrate",
+    "push": "pnpm --filter server run prisma:push",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:restart": "pnpm run docker:down && pnpm run docker:up"
   },
   "keywords": [],
   "author": "",
