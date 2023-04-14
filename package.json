@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "concurrently \"cd frontend && pnpm dev\" \"cd backend && pnpm dev\""
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"pnpm run server:dev\" \"pnpm run client:dev\"",
+    "server:dev": "pnpm --filter server run dev",
+    "client:dev": "pnpm --filter client run dev"
   },
   "keywords": [],
   "author": "",

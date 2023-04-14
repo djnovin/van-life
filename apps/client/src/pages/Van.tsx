@@ -19,11 +19,11 @@ const getVan = async (id: string) => {
 };
 
 type Vans = {
-  price: ReactNode;
   imageUrl: string | undefined;
   id: string;
   name: string;
   description: string;
+  price: string;
 };
 
 const Van = () => {

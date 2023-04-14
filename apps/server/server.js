@@ -3,6 +3,9 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const PrismaClient = require("@prisma/client").PrismaClient;
+
+const prisma = new PrismaClient();
 
 // middleware
 app.use(cors({
@@ -96,6 +99,7 @@ app.get("/api/vans/:id", (req, res) => {
   res.json(van);
 });
 
+// get all vans
 app.get("/api/vans", (req, res) => {
   const data = [
     {
@@ -155,6 +159,24 @@ app.get("/api/vans", (req, res) => {
   ];
   res.send(data);
   });
+
+app.post("/api/newsletter", (req, res) => {
+// save email to database with prisma
+const { email } = req.body
+
+prisma.newsletter
+  .create({
+    data: {
+      email: email,
+    },
+  })
+  .then((data) => {
+    res.send(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+});
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
