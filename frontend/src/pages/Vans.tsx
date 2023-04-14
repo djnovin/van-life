@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 /*
 Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources.
@@ -16,13 +17,8 @@ const getVans = async () => {
   return response.data;
 };
 
-const getVan = async (id: string) => {
-  const response = await instance.get(`/api/vans/${id}`);
-  return response.data;
-};
-
 type Vans = {
-  id: string;
+  id: number;
   name: string;
   description: string;
 };
@@ -38,10 +34,15 @@ const Home = () => {
     //map
     <div>
       {vans.map((van) => (
-        <div key={van.id}>
-          <h1>{van.name}</h1>
-          <p>{van.description}</p>
-        </div>
+        <Link
+          to={`/vans/${van.id}`}
+          key={van.id}
+        >
+          <div>
+            <h1>{van.name}</h1>
+            <p>{van.description}</p>
+          </div>
+        </Link>
       ))}
     </div>
   );
