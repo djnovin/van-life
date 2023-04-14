@@ -1,14 +1,18 @@
-import React from "react";
-import bgImg from "../images/about-hero.png";
-import { Link } from "react-router-dom";
+import React from 'react';
+import bgImg from '../images/about-hero.png';
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
 const About: React.FC<Props> = () => {
   return (
-    <div className="about-page-container">
-      <img src={bgImg} className="about-hero-image" />
-      <div className="about-page-content">
+    <div className='about-page-container'>
+      <img
+        alt=''
+        src={bgImg}
+        className='about-hero-image'
+      />
+      <div className='about-page-content'>
         <h1>Don’t squeeze in a sedan when you could relax in a van.</h1>
         <p>
           Our mission is to enliven your road trip with the perfect travel van
@@ -20,13 +24,16 @@ const About: React.FC<Props> = () => {
           of touring the world on 4 wheels.
         </p>
       </div>
-      <div className="about-page-cta">
+      <div className='about-page-cta'>
         <h2>
           Your destination is waiting.
           <br />
           Your van is ready.
         </h2>
-        <Link className="link-button" to="/vans">
+        <Link
+          className='link-button'
+          to='/vans'
+        >
           Explore our vans
         </Link>
       </div>
